@@ -10,10 +10,6 @@ function addFigure(type) {
 
     let innerHTML = `${getFigureText(type)}<span style= 'textFigure' class="close-btn">&times;</span>`;
 
-    if (type === 'condition' || type === 'loop') {
-        innerHTML = `${getFigureText(type)}<span style= 'textFigure' class="close-btnC">&times;</span>`;
-    }
-
     if (type === 'start') {
         innerHTML += `<div class="ep output-node"></div>`;
     } else if (type === 'end') {
@@ -145,9 +141,9 @@ function getFigureText(type) {
         case 'operation':
             return 'Operación';
         case 'condition':
-            return '<label class="textFigure">Condición</label>';
+            return 'Condición';
         case 'loop':
-            return '<label class="textFigure">Ciclo</label>';
+            return 'Ciclo';
         case 'declare':
             return 'Declarar Variable';
         default:
@@ -163,15 +159,14 @@ function editFigure(figure) {
 }
 
 function removeFigureAndConnections(figure) {
-    jsPlumbInstance.remove(figure); // Eliminar el elemento y todas las conexiones asociadas
-    figure.remove(); // Eliminar el elemento del DOM
+    jsPlumbInstance.remove(figure);
+    figure.remove();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     jsPlumbInstance.setContainer('flowchart');
 });
 
-// Función para agregar un botón de eliminación a una conexión
 function addDeleteButton(connection) {
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Eliminar';
@@ -183,7 +178,6 @@ function addDeleteButton(connection) {
     document.body.appendChild(deleteButton);
 }
 
-// Evento para agregar botones de eliminación a todas las conexiones existentes
 jsPlumbInstance.bind('connection', (info) => {
     const connection = info.connection;
     addDeleteButton(connection);
