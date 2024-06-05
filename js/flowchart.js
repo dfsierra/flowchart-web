@@ -1,27 +1,25 @@
-let currentId = 0;
-const jsPlumbInstance = jsPlumb.getInstance({
-    Connector: ["Flowchart", { cornerRadius: 5 }],
-    Anchors: ["Right", "Left"],
-    PaintStyle: { stroke: "blue", strokeWidth: 2 },
-    Endpoint: "Blank",
-    EndpointStyle: { fill: "blue" },
-    ConnectorOverlays: [
-        ["Arrow", { width: 10, length: 10, location: 1 }]
-    ]
-});
+const jsPlumbInstance = jsPlumb.getInstance();
+
+let currentId = 1;
 
 function addFigure(type) {
     const flowchart = document.getElementById('flowchart');
     const figure = document.createElement('div');
     figure.className = `figure ${type}`;
     figure.id = `figure-${currentId++}`;
-    
-    let innerHTML = `${getFigureText(type)}<span class="close-btn">&times;</span>`;
-    
+
+    let innerHTML = `${getFigureText(type)}<span style= 'textFigure' class="close-btn">&times;</span>`;
+
+    if (type === 'condition' || type === 'loop') {
+        innerHTML = `${getFigureText(type)}<span style= 'textFigure' class="close-btnC">&times;</span>`;
+    }
+
     if (type === 'start') {
         innerHTML += `<div class="ep output-node"></div>`;
     } else if (type === 'end') {
         innerHTML += `<div class="ep input-node"></div>`;
+    } else if (type === 'condition' || type === 'loop') {
+        innerHTML += `<div class="ep input-nodeC"></div><div class="ep output-nodeC"></div>`;
     } else {
         innerHTML += `<div class="ep input-node"></div><div class="ep output-node"></div>`;
     }
@@ -45,7 +43,7 @@ function addFigure(type) {
                 const x = startX + event.dx;
                 const y = startY + event.dy;
 
-                target.style.transform = `translate(${x}px, ${y}px)`;
+                target.style.transform = `translate(${x}px, ${y}px), rotate(45deg)`;
                 target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y);
 
@@ -91,6 +89,24 @@ function addFigure(type) {
             dropOptions: { hoverClass: 'dragHover' },
             maxConnections: 5
         });
+    } else if (type === 'condition' || type === 'loop') {
+        jsPlumbInstance.makeSource(figure.querySelector('.output-nodeC'), {
+            anchor: 'Right',
+            connector: ['Flowchart', { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],
+            connectorStyle: {
+                strokeWidth: 2,
+                stroke: '#000',
+                joinstyle: 'round',
+                outlineStroke: 'white',
+                outlineWidth: 2
+            },
+            maxConnections: 5
+        });
+        jsPlumbInstance.makeTarget(figure.querySelector('.input-nodeC'), {
+            anchor: 'Left',
+            dropOptions: { hoverClass: 'dragHover' },
+            maxConnections: 5
+        });
     } else {
         jsPlumbInstance.makeSource(figure.querySelector('.output-node'), {
             anchor: 'Right',
@@ -116,7 +132,7 @@ function addFigure(type) {
     const closeButton = figure.querySelector('.close-btn');
     closeButton.onclick = (e) => {
         e.stopPropagation();
-        removeFigure(figure);
+        removeFigureAndConnections(figure);
     };
 }
 
@@ -129,9 +145,9 @@ function getFigureText(type) {
         case 'operation':
             return 'Operación';
         case 'condition':
-            return 'Condición';
+            return '<label class="textFigure">Condición</label>';
         case 'loop':
-            return 'Ciclo';
+            return '<label class="textFigure">Ciclo</label>';
         case 'declare':
             return 'Declarar Variable';
         default:
@@ -140,18 +156,39 @@ function getFigureText(type) {
 }
 
 function editFigure(figure) {
-    const newText = prompt('Editar contenido:', figure.innerText.replace('×', ''));
+    const newText = prompt('Editar contenido:', figure.childNodes[0].nodeValue.trim());
     if (newText !== null) {
         figure.childNodes[0].nodeValue = newText;
     }
 }
 
-function removeFigure(figure) {
-    jsPlumbInstance.removeAllEndpoints(figure);
-    jsPlumbInstance.deleteConnectionsForElement(figure.id); // Asegurar la eliminación de las conexiones
-    figure.remove();
+function removeFigureAndConnections(figure) {
+    jsPlumbInstance.remove(figure); // Eliminar el elemento y todas las conexiones asociadas
+    figure.remove(); // Eliminar el elemento del DOM
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     jsPlumbInstance.setContainer('flowchart');
 });
+
+// Función para agregar un botón de eliminación a una conexión
+function addDeleteButton(connection) {
+    const deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Eliminar';
+    deleteButton.className = 'delete-connection-btn';
+    deleteButton.onclick = () => {
+        jsPlumbInstance.deleteConnection(connection);
+        deleteButton.remove();
+    };
+    document.body.appendChild(deleteButton);
+}
+
+// Evento para agregar botones de eliminación a todas las conexiones existentes
+jsPlumbInstance.bind('connection', (info) => {
+    const connection = info.connection;
+    addDeleteButton(connection);
+});
+
+
+
+
