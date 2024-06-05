@@ -43,39 +43,47 @@ header {
     position: absolute;
 }
 
-.figure.start, .figure.end {
-    background-color: #4CAF50;
+.figure.start {
+    background-color: #4caf78;
+    border-radius: 15px; /* Esquinas redondeadas */
+}
+
+.figure.end {
+    background-color: #7e43a6;
     border-radius: 15px; /* Esquinas redondeadas */
 }
 
 
 .figure.operation {
-    background-color: #8bc34a;
+    background-color: #c34a4a;
 }
 
-/* Resto del CSS */
-
-.figure.condition, .figure.loop {
-    width: 120px; /* Ancho del rombo */
-    height: 120px; /* Altura del rombo */
+.figure.condition {
+    width: 55px;
+    height: 55px;
     position: relative;
-    background-color: #03a9f4;
-    transform: rotate(45deg); /* Rotar el rombo 45 grados */
-    transform-origin: center; /* Establecer el origen de la transformación en el centro */
+    background-color: #f0ff21;
+    border-radius: 50%;
+    transform-origin: center;
+}
+
+.figure.loop {
+    width: 55px;
+    height: 55px;
+    position: relative;
+    background-color: #3499c9;
+    border-radius: 50%;
+    transform-origin: center;
 }
 
 .figure.condition::after, .figure.loop::after {
-    content: attr(data-text); /* Usa el atributo data-text como contenido */
+    content: attr(data-text);
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-180deg); /* Ajusta el texto */
+    transform: rotate(-180deg);
     color: white;
 }
-
-/* Resto del CSS */
-
-
 
 .textFigure {
     display: block;
@@ -127,15 +135,13 @@ header {
 }
 
 .input-nodeC {
-    opacity: 0;
-    left: -35px;
+    left: -5px;
     top: 48%;
     transform: translateY(-50%) rotate(-180deg);
 }
 
 .output-nodeC {
-    opacity: 100;
-    right: -35px;
+    right: -5px;
     top: 48%;
     transform: translateY(-50%) rotate(-180deg);
 }
