@@ -43,28 +43,46 @@ header {
     position: absolute;
 }
 
-.figure.start {
+.figure.start, .figure.end {
     background-color: #4CAF50;
+    border-radius: 15px; /* Esquinas redondeadas */
 }
 
-.figure.end {
-    background-color: #4CAF50;
-}
 
 .figure.operation {
     background-color: #8bc34a;
 }
 
-.figure.condition {
+/* Resto del CSS */
+
+.figure.condition, .figure.loop {
+    width: 120px; /* Ancho del rombo */
+    height: 120px; /* Altura del rombo */
+    position: relative;
     background-color: #03a9f4;
+    transform: rotate(45deg); /* Rotar el rombo 45 grados */
+    transform-origin: center; /* Establecer el origen de la transformación en el centro */
 }
 
-.figure.loop {
-    background-color: #ff5722;
+.figure.condition::after, .figure.loop::after {
+    content: attr(data-text); /* Usa el atributo data-text como contenido */
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-180deg); /* Ajusta el texto */
+    color: white;
 }
 
-.figure.declare {
-    background-color: #9c27b0;
+/* Resto del CSS */
+
+
+
+.textFigure {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .close-btn {
@@ -76,7 +94,17 @@ header {
     color: red;
 }
 
+.close-btnC {
+    top: 5px;
+    right: 60%;
+    cursor: pointer;
+    font-weight: bold;
+    color: red;
+}
+
 .ep {
+    right: -5px;
+    top: 50%;
     width: 10px;
     height: 10px;
     border: 1px solid #000;
@@ -89,11 +117,25 @@ header {
 .input-node {
     left: -5px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(-180deg);
 }
 
 .output-node {
     right: -5px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 55%;
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+.input-nodeC {
+    opacity: 0;
+    left: -35px;
+    top: 48%;
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+.output-nodeC {
+    opacity: 100;
+    right: -35px;
+    top: 48%;
+    transform: translateY(-50%) rotate(-180deg);
 }

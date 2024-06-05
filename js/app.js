@@ -1,24 +1,3 @@
-document.getElementById('saveButton').addEventListener('click', () => {
-    const flowchart = document.getElementById('flowchart');
-    const figures = flowchart.getElementsByClassName('figure');
-    const data = Array.from(figures).map(figure => ({
-        id: figure.id,
-        type: figure.classList[1],
-        text: figure.childNodes[0].nodeValue.trim(),
-        style: figure.getAttribute('style'),
-        x: figure.getAttribute('data-x'),
-        y: figure.getAttribute('data-y')
-    }));
-    const connections = jsPlumbInstance.getAllConnections().map(connection => ({
-        sourceId: connection.sourceId,
-        targetId: connection.targetId,
-        sourceEndpoint: connection.endpoints[0].getUuid(),
-        targetEndpoint: connection.endpoints[1].getUuid(),
-        anchors: connection.endpoints.map(endpoint => endpoint.anchor.type)
-    }));
-    localStorage.setItem('flowchart', JSON.stringify({ data, connections }));
-    alert('Diagrama guardado');
-});
 
 window.addEventListener('load', () => {
     const savedData = localStorage.getItem('flowchart');
@@ -142,3 +121,9 @@ window.addEventListener('load', () => {
         });
     }
 });
+
+function removeFigure(figure) {
+    jsPlumbInstance.removeAllEndpoints(figure); // Eliminar todos los endpoints y conexiones asociadas
+    figure.remove(); // Eliminar el elemento del DOM
+}
+
