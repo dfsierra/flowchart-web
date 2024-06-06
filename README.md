@@ -43,11 +43,11 @@ No es necesario instalar nada para utilizar Flowchart Creator. Simplemente abre 
 
 ¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, siéntete libre de bifurcar el repositorio y enviar tus propias mejoras a través de solicitudes de extracción. Aqui alguna ideas:
 
-Generación de código desde el diagrama de flujo: Permitir a los usuarios convertir diagramas de flujo en código ejecutable en varios lenguajes de programación, como Python, JavaScript, etc., con opciones de plantillas y optimización de código.
+- **Generación de código desde el diagrama de flujo**: Permitir a los usuarios convertir diagramas de flujo en código ejecutable en varios lenguajes de programación, como Python, JavaScript, etc., con opciones de plantillas y optimización de código.
 
-Edición bidireccional entre HTML y diagrama de flujo: Posibilitar la importación de HTML existente para editarlo como un diagrama de flujo y viceversa, asegurando la sincronización automática entre ambos.
+- **Edición bidireccional entre HTML y diagrama de flujo**: Posibilitar la importación de HTML existente para editarlo como un diagrama de flujo y viceversa, asegurando la sincronización automática entre ambos.
 
-Flechas de avance y contorno dinámico: Implementar flechas animadas para seguir el flujo del código y resaltar secciones específicas con contornos dinámicos para una mejor visualización y comprensión del flujo de trabajo.
+- **Flechas de avance y contorno dinámico**: Implementar flechas animadas para seguir el flujo del código y resaltar secciones específicas con contornos dinámicos para una mejor visualización y comprensión del flujo de trabajo.
 
 ## Equipo
 
