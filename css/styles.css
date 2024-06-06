@@ -1,28 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
     margin: 0;
     padding: 0;
+    background-color: white;
+}
+
+
+html {
+    scroll-behavior: smooth;
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 0;
+    background-color: #003089;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+    margin-bottom: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+header .logo {
+    font-weight: bold;
+    color: rgb(224, 225, 221);
+    font-size: 1.6em;
+    margin-left: 8px;
+    margin-right: auto;
+    justify-content: start;
+
+}
+
+header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header a {
+    padding: 5px 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(224, 225, 221);
+}
+
+header a:hover {
+    color: rgb(119, 141, 169);
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
     text-align: center;
+    justify-content: end;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.container_main{
+    display: flex;
+    height: 100%;
+}
+
+main{
+    height: 80vh;
 }
 
 .toolbar {
-    padding: 10px;
-    text-align: center;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ccc;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #003089;
+    height: 100%;
+    align-items: center;
 }
 
 .toolbar button {
     margin: 5px;
-    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    text-align: center;
+}
+
+.start_button{
+    background-color: #4caf78;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.end_button{
+    background-color: #7e43a6;
+    border-radius: 15px; 
+    padding: 10px;
+}
+
+.loop_button{
+    width: 55px;
+    height: 55px;
+    position: relative;
+    background-color: #3499c9;
+    border-radius: 50%;
+    transform-origin: center;
+}
+
+.operation_button{
+    background-color: #c34a4a;
+    padding: 10px;
+}
+
+.condition_button{
+    width: 55px;
+    height: 55px;
+    position: relative;
+    background-color: #f0ff21;
+    border-radius: 50%;
+    transform-origin: center;
+}
+
+.toolbar button:hover{
+    background-color: rgb(119, 141, 169);
+    color: aliceblue;
 }
 
 .flowchart {
@@ -31,11 +131,15 @@ header {
     height: 80vh;
     border: 1px solid #ccc;
     overflow: auto;
+    background-color: #003089;
+    width: 100vw;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .figure {
     border: 1px solid #000;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     width: 100px;
     text-align: center;
@@ -45,12 +149,12 @@ header {
 
 .figure.start {
     background-color: #4caf78;
-    border-radius: 15px; /* Esquinas redondeadas */
+    border-radius: 15px; 
 }
 
 .figure.end {
     background-color: #7e43a6;
-    border-radius: 15px; /* Esquinas redondeadas */
+    border-radius: 15px; 
 }
 
 
@@ -99,7 +203,7 @@ header {
     right: 5px;
     cursor: pointer;
     font-weight: bold;
-    color: red;
+    color: white;
 }
 
 .close-btnC {

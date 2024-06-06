@@ -77,13 +77,13 @@ function addFigure(type) {
                 outlineStroke: 'white',
                 outlineWidth: 2
             },
-            maxConnections: 5
+            maxConnections: -1
         });
     } else if (type === 'end') {
         jsPlumbInstance.makeTarget(figure.querySelector('.input-node'), {
             anchor: 'Left',
             dropOptions: { hoverClass: 'dragHover' },
-            maxConnections: 5
+            maxConnections: -1
         });
     } else if (type === 'condition' || type === 'loop') {
         jsPlumbInstance.makeSource(figure.querySelector('.output-nodeC'), {
@@ -96,12 +96,12 @@ function addFigure(type) {
                 outlineStroke: 'white',
                 outlineWidth: 2
             },
-            maxConnections: 5
+            maxConnections: -1
         });
         jsPlumbInstance.makeTarget(figure.querySelector('.input-nodeC'), {
             anchor: 'Left',
             dropOptions: { hoverClass: 'dragHover' },
-            maxConnections: 5
+            maxConnections: -1
         });
     } else {
         jsPlumbInstance.makeSource(figure.querySelector('.output-node'), {
@@ -114,12 +114,12 @@ function addFigure(type) {
                 outlineStroke: 'white',
                 outlineWidth: 2
             },
-            maxConnections: 5
+            maxConnections: -1
         });
         jsPlumbInstance.makeTarget(figure.querySelector('.input-node'), {
             anchor: 'Left',
             dropOptions: { hoverClass: 'dragHover' },
-            maxConnections: 5
+            maxConnections: -1
         });
     }
 
@@ -141,9 +141,9 @@ function getFigureText(type) {
         case 'operation':
             return 'Operación';
         case 'condition':
-            return 'Condición';
+            return 'Cond.';
         case 'loop':
-            return 'Ciclo';
+            return 'Decl.';
         case 'declare':
             return 'Declarar Variable';
         default:
@@ -175,7 +175,6 @@ function addDeleteButton(connection) {
         jsPlumbInstance.deleteConnection(connection);
         deleteButton.remove();
     };
-    document.body.appendChild(deleteButton);
 }
 
 jsPlumbInstance.bind('connection', (info) => {
