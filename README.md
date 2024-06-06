@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    Flowchart Creator - Crea diagramas de flujo fácilmente
+    FlowcCC - Crea diagramas de flujo fácilmente
   </h1>
 
   <h4>
@@ -17,7 +17,7 @@
 
 ## Descripción y Justificación del Proyecto
 
-Flowchart Creator es una herramienta web interactiva diseñada para ayudarte a crear diagramas de flujo de forma rápida y sencilla. Con esta aplicación, puedes agregar y conectar figuras que representan diferentes elementos de tu flujo de trabajo, como inicio, fin, operaciones, condiciones y ciclos. Esto es útil para planificar y visualizar procesos, algoritmos y flujos de trabajo en diversos campos, como la programación, la gestión de proyectos y la ingeniería de sistemas.
+FlowCC es una herramienta web interactiva diseñada para ayudarte a crear diagramas de flujo de forma rápida y sencilla. Con esta aplicación, puedes agregar y conectar figuras que representan diferentes elementos de tu flujo de trabajo, como inicio, fin, operaciones, condiciones y ciclos. Esto es útil para planificar y visualizar procesos, algoritmos y flujos de trabajo en diversos campos, como la programación, la gestión de proyectos y la ingeniería de sistemas.
 
 ## Características
 
