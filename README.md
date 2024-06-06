@@ -41,7 +41,7 @@ No es necesario instalar nada para utilizar Flowchart Creator. Simplemente abre 
 
 ## Contribuir
 
-¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, siéntete libre de bifurcar el repositorio y enviar tus propias mejoras a través de solicitudes de extracción. Aqui alguna ideas:
+¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, siéntete libre de bifurcar el repositorio y enviar tus propias mejoras a través de solicitudes de extracción. Aqui algunas ideas:
 
 - **Generación de código desde el diagrama de flujo**: Permitir a los usuarios convertir diagramas de flujo en código ejecutable en varios lenguajes de programación, como Python, JavaScript, etc., con opciones de plantillas y optimización de código.
 
