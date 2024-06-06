@@ -25,6 +25,22 @@
     </main>
     <script src="js/flowchart.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        document.getElementById('saveButton').addEventListener('click', function() {
+            var flowchartContainer = document.getElementById('flowchart');
+            var flowchartHTML = flowchartContainer.innerHTML;
+
+            var blob = new Blob([flowchartHTML], { type: 'text/html' });
+            var url = URL.createObjectURL(blob);
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'diagrama.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
 </body>
 </html>
-
